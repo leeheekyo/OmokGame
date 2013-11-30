@@ -19,8 +19,10 @@ public class Screen2 extends JPanel {
 	JTextField textP1;
 	JTextField textP2;
 	JButton continueButton;
+	JFrame frame;
 	
-	public Screen2() {
+	public Screen2(JFrame frame) {
+		this.frame = frame;
 		setBackground(Color.WHITE);
 		setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -45,17 +47,11 @@ public class Screen2 extends JPanel {
 		this.add(nextButton);
 	}
 	protected void createNewGame() {
-		this.setVisible(false);
-		Board frame = new Board("OMOK");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //Set up the content pane.
-        frame.addComp(frame.getContentPane());
-        System.out.println(frame.getHeight());
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
-
-        System.out.println(frame.getHeight());
-        System.out.println(frame.getWidth());
+        Board board = new Board(frame);
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(board);
+		board.addComp(frame.getContentPane());
+		frame.pack();
+		frame.setVisible(true);
 	}
 }

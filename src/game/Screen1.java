@@ -14,8 +14,10 @@ public class Screen1 extends JPanel {
 	JButton newButton;
 	JButton loadButton;
 	JButton exitButton;
+	JFrame frame;
 	
-	public Screen1() {
+	public Screen1(JFrame frame) {
+		this.frame = frame;
 		setBackground(Color.WHITE);
 		setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -47,14 +49,10 @@ public class Screen1 extends JPanel {
 	}
 
 	protected void createNewGame() {
-		this.setVisible(false);
-		JFrame frame = new JFrame("OMOK");
-		Screen2 screen2 = new Screen2();
-		screen2.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(screen2);
+		Screen2 screen2 = new Screen2(frame);
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(screen2);
 		frame.pack();
-		frame.setBounds(0,0,654,600);
 		frame.setVisible(true);
 	}
 }
