@@ -15,11 +15,15 @@ import players.Player;
 public class Board extends JFrame{
 	public static Game game;
 	final int DIMENSION = 20, BUTTON_SIZE = 30;
-	
+	JFrame frame;
 	public Board(String name, Player p1, Player p2){
 		super(name);
 		setResizable(false);
 		game = new Game(p1, p2, DIMENSION);
+	}
+	
+	public Board(JFrame frame){
+		this.frame = frame;
 	}
 	
 	public void addComp(Container pane){
@@ -30,20 +34,21 @@ public class Board extends JFrame{
 				BoardButton button = new BoardButton(i, k);
 				button.addActionListener(new ButtonListener(i, k));
 				button.setPreferredSize(new Dimension(BUTTON_SIZE,BUTTON_SIZE));
+				button.setOpaque(false);
 				panel.add(button);
 			}
 		}
 		
 		JPanel scorepanel = new JPanel();
-		scorepanel.setLayout(new GridLayout(0,2));
+		scorepanel.setLayout(new GridLayout(0,3));
+		scorepanel.add(new JLabel("It is Player 1's turn!"));
 		scorepanel.add(new JLabel("Player 1 Score: "));
 		scorepanel.add(new JLabel("Player 2 Score: "));
 		
-		JPanel infopanel = new JPanel();
-		infopanel.setLayout(new GridLayout(0,1));
-		infopanel.add(new JLabel("It is Player 1's turn!"));
+		JPanel buttonpanel = new JPanel();
+		buttonpanel.setLayout(new GridLayout(0,1));
 		
-		pane.add(infopanel, BorderLayout.NORTH);
+		pane.add(buttonpanel, BorderLayout.NORTH);
 		pane.add(panel, BorderLayout.CENTER);
 		pane.add(scorepanel, BorderLayout.SOUTH);
 	}
