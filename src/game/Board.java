@@ -10,12 +10,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import players.Player;
+
 public class Board extends JFrame{
+	Game game;
 	final int DIMENSION = 20, BUTTON_SIZE = 30;
-	public Board(String name){
+	
+	public Board(String name, Player p1, Player p2){
 		super(name);
 		setResizable(false);
+		game = new Game(p1, p2, DIMENSION);
 	}
+	
 	public void addComp(Container pane){
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(0,DIMENSION));
@@ -49,8 +55,5 @@ public class Board extends JFrame{
         //Display the window.
         frame.pack();
         frame.setVisible(true);
-	}
-	public static void main(String [] args){
-		showBoard();
 	}
 }
