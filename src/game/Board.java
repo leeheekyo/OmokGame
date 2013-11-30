@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Board extends JFrame{
@@ -25,11 +26,23 @@ public class Board extends JFrame{
 				panel.add(button);
 			}
 		}
+		
+		JPanel scorepanel = new JPanel();
+		scorepanel.setLayout(new GridLayout(0,2));
+		scorepanel.add(new JLabel("Player 1 Score: "));
+		scorepanel.add(new JLabel("Player 2 Score: "));
+		
+		JPanel infopanel = new JPanel();
+		infopanel.setLayout(new GridLayout(0,1));
+		infopanel.add(new JLabel("It is Player 1's turn!"));
+		
+		pane.add(infopanel, BorderLayout.NORTH);
 		pane.add(panel, BorderLayout.CENTER);
+		pane.add(scorepanel, BorderLayout.SOUTH);
 	}
 	public static void showBoard(){
 		//Create and set up the window.
-        Board frame = new Board("GridLayoutDemo");
+        Board frame = new Board("OMOK");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Set up the content pane.
         frame.addComp(frame.getContentPane());
