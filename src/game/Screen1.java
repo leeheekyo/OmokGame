@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -47,6 +48,13 @@ public class Screen1 extends JPanel {
 
 	protected void createNewGame() {
 		this.setVisible(false);
-		Screen2 sc2 = new Screen2();
+		JFrame frame = new JFrame("OMOK");
+		Screen2 screen2 = new Screen2();
+		screen2.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(screen2);
+		frame.pack();
+		frame.setBounds(0,0,654,600);
+		frame.setVisible(true);
 	}
 }
