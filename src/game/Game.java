@@ -5,7 +5,7 @@ import players.Player;
 public class Game {
 	private Player p1, p2;
 	private Player turn;
-	private int[][] board;
+	private static int[][] board;
 	
 	public Game(Player player1, Player player2, int dimension){
 		p1 = player1;
@@ -17,6 +17,19 @@ public class Game {
 				board[i][j] = 0;
 			}
 		}
+	}
+	
+	public Player getP1(){
+		return p1;
+	}
+	public Player getP2(){
+		return p2;
+	}
+	public int[][] getBoard(){
+		return board;
+	}
+	public void changeBoard(int x, int y){
+		board[x][y] = turn.getID();
 	}
 	
 	public void changeTurn(){
