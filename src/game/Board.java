@@ -39,6 +39,7 @@ public class Board extends JFrame{
 			}
 		}
 		
+		//Hello world
 		JPanel scorepanel = new JPanel();
 		scorepanel.setLayout(new GridLayout(0,3));
 		scorepanel.add(new JLabel("It is Player 1's turn!"));
